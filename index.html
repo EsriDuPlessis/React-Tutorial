@@ -12,15 +12,28 @@
   <div id="app"></div>
   <script type="text/babel">
     class App extends React.Component {
-      render(){
-          state = {
+      state = {
               name: 'Esri',
               age: 20,
           }
+          handleMouseOver(e){
+              console.log(e.target, e.pageX);
+          }
+          handleCopy(e){
+              console.log('Try being original for once');
+          }
+          handleClick(e){
+              console.log(e.target);
+          }
+        
+          render(){          
         return(
           <div className="app-content">
             <h1>Hello, ninjas!</h1>
             <p>My name is {this.state.name } and I am { this.state.age } years old.</p>
+            <button onClick={this.handleClick}>Click me</button>
+            <button onMouseOver={this.handleMouseOver}>Hover me</button>
+            <p onCopy={this.handleCopy}>What we think, we become</p>
           </div>
         )
       }
