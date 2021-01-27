@@ -16,28 +16,23 @@
         name: 'Esri',
         age: 20
       }
-      handleMouseOver= (e) => {
-        console.log(e.target, e.pageX);
-      }
-      handleCopy = (e) => {
-        console.log('Try being original for once');
-      }
-      handleClick = (e) => {
-        console.log(e.target);
-        console.log(this.state);
+      handleChange = (e) => {
         this.setState({
-          name: 'Piet'
-        });
+          name: e.target.value
+        })
       }
-        
+      handleSubmit = (e) => {
+        e.preventDefault();
+        console.log('form submitted', this.state.name);
+      }
       render(){          
         return(
           <div className="app-content">
-            <h1>Hello, ninjas!</h1>
-            <p>My name is {this.state.name } and I am { this.state.age } years old.</p>
-            <button onClick={this.handleClick}>Click me</button>
-            <button onMouseOver={this.handleMouseOver}>Hover me</button>
-            <p onCopy={this.handleCopy}>What we think, we become</p>
+            <p>My name is {this.state.name }.</p>
+            <form onSubmit={this.handleSubmit}>
+              <input type="text" onChange={this.handleChange} />
+              <button>Submit</button>
+            </form>
           </div>
         )
       }
